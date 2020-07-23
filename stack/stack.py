@@ -23,7 +23,7 @@ class Stack:
     #     return len(self.storage)
 
     # def push(self, value):
-    #     return self.storage.append(value)
+    #     self.storage.append(value)
 
     # def pop(self):
     #     if len(self.storage) != 0:
@@ -40,7 +40,7 @@ class Stack:
         return self.storage.length
 
     def push(self, value):
-        return self.storage.add_to_tail(value)
+        self.storage.add_to_tail(value)
 
     def pop(self):
         return self.storage.remove_tail()
