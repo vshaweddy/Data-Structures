@@ -44,3 +44,5 @@ class Stack:
 
     def pop(self):
         return self.storage.remove_tail()
+
+    # 3. Array is fixed size, while Linked List is dynamic size
