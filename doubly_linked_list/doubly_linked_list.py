@@ -102,6 +102,9 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        # delete()
+        # save the value we deleted
+        # add_to_head(value)
         pass
         
     """
@@ -116,7 +119,14 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        if node == self.head:
+            self.remove_from_head()
+        elif node == self.tail:
+            self.remove_from_tail()   
+        else:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+            self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes 
