@@ -27,15 +27,13 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        new_node = ListNode(value)
+        new_node = ListNode(value, None, self.head)
 
         if self.length == 0:
-            self.head = new_node
             self.tail = new_node
-        else:
-            self.head.previous = new_node
-            new_node.next = self.head
-            self.head = new_node
+        elif self.head is not None:
+            self.head.prev = new_node
+        self.head = new_node
         self.length += 1
         
     """
@@ -102,10 +100,8 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        # delete()
-        # save the value we deleted
-        # add_to_head(value)
-        pass
+        self.delete(node)
+        self.add_to_head(node.value)
         
     """
     Removes the input node from its current spot in the 
@@ -119,7 +115,9 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        if node == self.head:
+        if self.length == 0:
+            return
+        elif node == self.head:
             self.remove_from_head()
         elif node == self.tail:
             self.remove_from_tail()   
