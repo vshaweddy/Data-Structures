@@ -13,16 +13,47 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+# 1. Array
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         self.storage.append(value)
+
+#     def dequeue(self):
+#         if len(self.storage) != 0:
+#             return self.storage.pop(0)
+#         else:
+#             return None
+
+# 2. Linked List
+from singly_linked_list import LinkedList
+
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = LinkedList()
     
     def __len__(self):
-        pass
+        return self.storage.length
 
     def enqueue(self, value):
-        pass
+        self.size += 1
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
-        pass
+        if self.storage.length != 0:
+            self.size -= 1
+            value = self.storage.head.get_value()
+            self.storage.remove_head()
+            return value
+        else:
+            return None
+
+# 3. The difference is the time complexity. An array will be linear because it needs to shift every element after one is removed. While the linked list has constant time complexity when removing from the front.
