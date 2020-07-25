@@ -44,12 +44,16 @@ class Queue:
         return self.storage.length
 
     def enqueue(self, value):
+        self.size += 1
         self.storage.add_to_tail(value)
 
     def dequeue(self):
         if self.storage.length != 0:
+            self.size -= 1
             value = self.storage.head.get_value()
             self.storage.remove_head()
             return value
         else:
             return None
+
+# 3. The difference is the time complexity. An array will be linear because it needs to shift every element after one is removed. While the linked list has constant time complexity when removing from the front.

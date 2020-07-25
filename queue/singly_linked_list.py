@@ -82,7 +82,7 @@ class LinkedList:
     def contains(self, value):
         # 1. use a loop to iterare through the linked list
         current = self.head
-        while current != None:
+        while current is not None:
             # 2. check if the value of the current node is the value we are searching for
             if current.get_value() == value:
                 return True
