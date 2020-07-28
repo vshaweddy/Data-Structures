@@ -100,6 +100,8 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        if node is self.head:
+            return
         self.delete(node)
         self.add_to_head(node.value)
         
@@ -108,6 +110,8 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
+        if node is self.tail:
+            return
         self.delete(node)
         self.add_to_tail(node.value)
 
