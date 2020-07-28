@@ -76,9 +76,13 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # call function on the current value fn(self.value)
+        fn(self.value)
         # if you can go left, call for_each on the right tree
+        if self.left:
+            self.left.for_each(fn)
         # if you can go right, call for_each on the right tree
-        pass
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
