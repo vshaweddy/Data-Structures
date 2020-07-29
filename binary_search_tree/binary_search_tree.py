@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from singly_linked_list import LinkedList
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -95,13 +97,20 @@ class BSTNode:
     # in an iterative breadth first traversal
     def bft_print(self):
         # create a queue for nodes
+        queue = LinkedList()
         # add the first node to the queue
+        queue.add_to_tail(self)
         # while queue is not empty
+        while queue.length > 0:
             # remove the first node from the queue
+            node = queue.remove_head()
             # print the removed node
+            print(node.value)
             # add all children into the queue
-
-        pass
+            if node.left is not None:
+                queue.add_to_tail(node.left)
+            if node.right is not None:
+                queue.add_to_tail(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -122,7 +131,6 @@ class BSTNode:
             if node.right is not None:
                 stack.append(node.right)
             # keep in the mind, the order you add the children, will matter (First In Last Out)
-
         
 
     # Stretch Goals -------------------------
