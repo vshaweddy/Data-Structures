@@ -86,12 +86,19 @@ class BSTNode:
         if self.right:
             self.right.for_each(fn)
 
+    def in_order(self, fn):
+        if self.left:
+            self.left.in_order(fn)
+        fn(self.value)
+        if self.right:
+            self.right.in_order(fn)
+
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        self.in_order(lambda x: print(x))   
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -132,7 +139,6 @@ class BSTNode:
                 stack.append(node.right)
             # keep in the mind, the order you add the children, will matter (First In Last Out)
         
-
     # Stretch Goals -------------------------
     # Note: Research may be required
 
@@ -162,8 +168,8 @@ bst.dft_print()
 
 # print("elegant methods")
 # print("pre order")
-# bst.pre_order_dft()
-# print("in order")
+bst.pre_order_dft()
+print("in order")
 # bst.in_order_dft()
 # print("post order")
 # bst.post_order_dft()  
